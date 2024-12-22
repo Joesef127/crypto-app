@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import CryptoSummary from './components/CryptoSummary';
+import { Crypto } from './Types';
 
-export type Crypto = {
-  id: string;
-  rank: string;
-  symbol: string;
-  name: string;
-  priceUsd: string;
-};
 
 function App() {
   const [cryptos, setCryptos] = useState<Crypto[] | null>();
@@ -15,7 +10,6 @@ function App() {
     const url = 'https://api.coincap.io/v2/assets';
     axios.get(url).then((response) => {
       setCryptos(response.data.data);
-      console.log(cryptos)
     });
   }, []);
   return (
@@ -23,14 +17,7 @@ function App() {
       <h1>Cryptocurrency Prices</h1>
       {cryptos
         ? cryptos.map((crypto) => {
-            return (
-              <div key={crypto.id}>
-                <p>Rank: {crypto.rank}</p>
-                <p>Symbol: {crypto.symbol}</p>
-                <p>Name: {crypto.name}</p>
-                <p>Price (USD): ${crypto.priceUsd}</p>
-              </div>
-            );
+          return <CryptoSummary key={crypto.id} crypto={crypto} />
           })
         : null}
     </div>
