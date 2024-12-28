@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import CryptoSummary from '../components/CryptoSummary';
+// import CryptoSummary from '../components/CryptoSummary';
 import { Crypto } from '../Types';
 import { Line } from 'react-chartjs-2';
 import moment from 'moment';
@@ -152,7 +152,7 @@ function LineChart() {
           <option value="3">Last 1 Day</option>
         </select>
       </div>
-      {selected && <CryptoSummary crypto={selected} />}
+      {/* {selected && <CryptoSummary crypto={selected} updateAmount={updateAmount} />} </> */}
       {data ? (
         <div style={{ width: 900 }}>
           <Line options={options} data={data} />

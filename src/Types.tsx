@@ -12,3 +12,5 @@ export type Crypto = {
   volumeUsd24Hr: string;
   vwap24Hr: string;
 };
+
+export type CryptoWithAmount = Crypto & { amount: number };
